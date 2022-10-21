@@ -1,6 +1,6 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
+author: "George Whitford"
 description: "My final project"
 output:
   distill::distill_article:
@@ -11,4 +11,10 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+Does a country having loitering munitions/short range UAVs increase the odds they escalate a regional conflict? 
+I am interested in exploring data related to drone procurement and regional conflicts/territorial disputes. I would like to explore the relationship between the procurement of loitering munitions/short range drones and conflict events in disputed territories. I already have a solid set of data derived from a conflict event tracker and publicly available information about drone procurement over time for Azerbaijan that I think I could use to test this in terms of the Nagorno-Karabakh conflict. This makes me confident that I can do similar work for other long conflicts to make a more complete project. Not trying to test whether or not all out wars break out, so this would be specific to longer term "stalemate" conflicts.
+
+Also would be interested in seeing the relationship between GDP growth and/or natural resource exports and conflict events in border conflicts for countries that, after the 90s, were mostly equipped with cold war surplus munitions. My hypothesis would be that recently its become easier for gas rich countries to buy a lot of very cheap weapons that create very cost effective asymmetries between militaries. 
+
+If this doesn't work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State's economic and geopolitical activity. I feel like there's room for a topical, data rich project. 
+
