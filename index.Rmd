@@ -16,5 +16,5 @@ I am interested in exploring data related to drone procurement and regional conf
 
 Also would be interested in seeing the relationship between GDP growth and/or natural resource exports and conflict events in border conflicts for countries that, after the 90s, were mostly equipped with cold war surplus munitions. My hypothesis would be that recently its become easier for gas rich countries to buy a lot of very cheap weapons that create very cost effective asymmetries between militaries. 
 
-If this doesn't work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State's economic and geopolitical activity. I feel like there's room for a topical, data rich project. 
+If this doesn't work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State's economic and geopolitical activity. I feel like there's room for a topical, data rich project.
 
