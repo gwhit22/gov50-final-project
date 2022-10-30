@@ -7,7 +7,6 @@ output:
     self_contained: false
 ---
 ## Milestone 2
-
 Date source: UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) Dataset
 Research question: Does the acquisition of cheaper, short range automated artillery increase the likelihood of escalation in a regional conflict? 
 Hypothesis: The acquisition of short range drones/automated artillery increases the likelihood of regional conflict escalation by creating low cost asymmetries that lower the financial and military cost of initiating conflict. For countries in longstanding regional disputes (that, for the sake of this experiment, at one point had similar post soviet armies), if a country acquires loitering munitions they are more likely to initiate conflict events in their disputed territory (this would likely occur after 2015). If niether country acquired drones, there would be no unique increase in conflict events. 
