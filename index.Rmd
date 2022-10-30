@@ -6,8 +6,14 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+## Milestone 2
 
-
+Date source: UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) Dataset
+Research question: Does the acquisition of cheaper, short range automated artillery increase the likelihood of escalation in a regional conflict? 
+Hypothesis: The acquisition of short range drones/automated artillery increases the likelihood of regional conflict escalation by creating low cost asymmetries that lower the financial and military cost of initiating conflict. For countries in longstanding regional disputes (that, for the sake of this experiment, at one point had similar post soviet armies), if a country acquires loitering munitions they are more likely to initiate conflict events in their disputed territory (this would likely occur after 2015). If niether country acquired drones, there would be no unique increase in conflict events. 
+Explanatory variable: Importation and integration of loitering munitions, mostly purchased from Israel, Turkey, and Iran. GDP growth might also come into play, as part of the thesis is reliant on how countries with new cash flows can easily acquire these drones. 
+Outcome variable: conflict events measured in the UCDP data set. Measures events generally, which is useful for capturing one sides general aggressiveness. Additionally, this captures military activity outside of war time, which is useful for measuring aggressiveness more generally. 
+If conflict events remained stagnant after the acquisition of drones for a country, this would generally disprove my hypothesis. The are obviously external factors which affect the frequency of conflict events, which I certainly need to control for. Conversely, if there is a strong relationship between the acquisition of certain forms of smart munitions and conflict events my hypothesis would be proven (again, controlling for external factors). 
 
 ## Project thoughts
 
@@ -17,4 +23,9 @@ I am interested in exploring data related to drone procurement and regional conf
 Also would be interested in seeing the relationship between GDP growth and/or natural resource exports and conflict events in border conflicts for countries that, after the 90s, were mostly equipped with cold war surplus munitions. My hypothesis would be that recently its become easier for gas rich countries to buy a lot of very cheap weapons that create very cost effective asymmetries between militaries. 
 
 If this doesn't work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State's economic and geopolitical activity. I feel like there's room for a topical, data rich project.
+
+
+
+
+
 
