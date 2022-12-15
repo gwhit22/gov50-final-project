@@ -6,25 +6,129 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+## Milestone 3
+
+
+```{r,echo=FALSE}
+library(lubridate)
+library(ggplot2)
+library(tidyverse)
+library(lubridate)
+library(infer)
+library(broom)
+
+conflict_events <- read_csv("GEDEvent.csv")
+africa <- conflict_events |>
+  filter(year > 1989 & year <= 2010, region == "Africa")
+
+africa$date_start<- as.Date(africa$date_start)
+africa$date_end<- as.Date(africa$date_end)
+
+africa<- africa|>
+  mutate("week" = floor_date(date_start, unit = "weeks"), "month" = floor_date(date_start, unit = "months"), "date_end_number" = as.numeric(date_end), "date_start_number" = as.numeric(date_start))|>
+  mutate("conflict_duration" = date_end_number- date_start_number)|>
+  filter(where_prec < 7)
+
+africa<-africa|>
+  mutate(type_of_violence_real = case_when(type_of_violence == 1 ~ "State_Based_Conflict",
+                                        type_of_violence == 2 ~ "Non_State_Conflict", 
+                                        type_of_violence == 3 ~ "One_Sided_Conflict"), 
+                        time_period = case_when(1989 < year & year <= 1995 ~ "90_to_95",
+                                   1995 < year & year <= 2000  ~ "96_to_2000",
+                                  2000 < year & year <= 2005  ~ "01_to_05",
+                                    2005 < year & year <= 2010  ~ "06_to_10"),
+         time_period_g = case_when(
+                                      1989 < year & year <= 1995 ~ 1,
+                                   1995 < year & year <= 2000  ~ 2,
+                                  2000 < year & year <= 2005  ~ 3,
+                                    2005 < year & year <= 2010  ~ 4))
+
+africa
+africa2<- africa|>
+  group_by(week)|>
+  summarise(conflict_events = sum(type_of_violence)) |>
+  ggplot(aes(x = week, y= conflict_events)) + geom_line()+
+  labs(x= "Time", y= "Weekly Conflict Events", title = "GED Events Tracker- Nagorno-Karabakh")
+
+
+
+africa_regression<-
+  lm(best ~ factor(type_of_violence_real) + factor(time_period) + country_id + conflict_duration + deaths_civilians + active_year, data = africa, na.action = na.exclude)
+
+
+modelsummary::modelsummary(africa_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
+
+state actors vs non state actors 
+
+duration
+
+urban and rural
+
+outliers- rwanda 
+
+
+relative to the ommitted category
+
+belongs to conflict
+
 ## Milestone 2
-Date source: UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) Dataset
-Research question: Does the acquisition of cheaper, short range automated artillery increase the likelihood of escalation in a regional conflict? 
-Hypothesis: The acquisition of short range drones/automated artillery increases the likelihood of regional conflict escalation by creating low cost asymmetries that lower the financial and military cost of initiating conflict. For countries in longstanding regional disputes (that, for the sake of this experiment, at one point had similar post soviet armies), if a country acquires loitering munitions they are more likely to initiate conflict events in their disputed territory (this would likely occur after 2015). If niether country acquired drones, there would be no unique increase in conflict events. 
-Explanatory variable: Importation and integration of loitering munitions, mostly purchased from Israel, Turkey, and Iran. GDP growth might also come into play, as part of the thesis is reliant on how countries with new cash flows can easily acquire these drones. 
-Outcome variable: conflict events measured in the UCDP data set. Measures events generally, which is useful for capturing one sides general aggressiveness. Additionally, this captures military activity outside of war time, which is useful for measuring aggressiveness more generally. 
-If conflict events remained stagnant after the acquisition of drones for a country, this would generally disprove my hypothesis. The are obviously external factors which affect the frequency of conflict events, which I certainly need to control for. Conversely, if there is a strong relationship between the acquisition of certain forms of smart munitions and conflict events my hypothesis would be proven (again, controlling for external factors). 
+Research question: Does government involvement in conflicts increase the amount of deaths?
 
-## Project thoughts
+It has been established that over time, generally, deaths during conflict have been decreasing since World War Two. That being said, conflicts in certain regions of the world have varied greatly during and after the Cold-War. In particular, Africa has experienced a litany of conflicts since the fall of the Soviet Union between both state actors (Ethiopia v. Eritrea), state actors and non state actors (Sierra Leone v. RUF and other militia groups), and conflicts between different militia groups. While these categories can be blurred, it raises the question of whether the involvement of a government significantly increases deaths in  given conflict.
 
-Does a country having loitering munitions/short range UAVs increase the odds they escalate a regional conflict? 
-I am interested in exploring data related to drone procurement and regional conflicts/territorial disputes. I would like to explore the relationship between the procurement of loitering munitions/short range drones and conflict events in disputed territories. I already have a solid set of data derived from a conflict event tracker and publicly available information about drone procurement over time for Azerbaijan that I think I could use to test this in terms of the Nagorno-Karabakh conflict. This makes me confident that I can do similar work for other long conflicts to make a more complete project. Not trying to test whether or not all out wars break out, so this would be specific to longer term "stalemate" conflicts.
+To answer this question, we will use the UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) to perform a cross-sectional expirment. The data set tracks and categorizes conflict events over time. Our dependent variable will be total deaths, which is categorized as "best" within the data set. Our main independent variable is conflict type, which we have to factor categorically for a couple reasons. The three categories are State-based conflict, non-state based conflict, and one-sided conflicts. The latter will inevitably skew the data, as massacres would logically result in disproportionate deaths and also directly our research questions (this data set tracks conflict events, not just wars). Other independent variables will be conflict duration, and active year (whether or not the conflict event occured during a longstanding conflict or war). Year of event and country will also be factored categorically in the regression, but for clarity on our independent variables it will be omitted from our table (year of event is split into 4 categories for our 20 year period).
 
-Also would be interested in seeing the relationship between GDP growth and/or natural resource exports and conflict events in border conflicts for countries that, after the 90s, were mostly equipped with cold war surplus munitions. My hypothesis would be that recently its become easier for gas rich countries to buy a lot of very cheap weapons that create very cost effective asymmetries between militaries. 
+Below is a basic graph demonstrating conflict events over time from 1990 to 2010 and a graphs demonstrating conflict deaths over time since 1990 to 2010. Notable in the conflict fatalities graph is how concentrated variations in death are by month and by week, especially for larger spikes. 
 
-If this doesn't work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State's economic and geopolitical activity. I feel like there's room for a topical, data rich project.
+```{r, echo=FALSE}
+africa_plot<- africa|>
+  group_by(year)|>
+  summarise(conflict_events = sum(type_of_violence)) |>
+  ggplot(aes(x = year, y = conflict_events)) + geom_line()+
+  labs(x= "Year (1990-2010)", y= "Yearly Conflict Events", title = "GED Events Tracker- Africa")
+
+africa_plot5<- africa|>
+  group_by(month)|>
+  summarise(conflict_events = sum(type_of_violence))|>
+  ggplot(aes(x = month, y = conflict_events)) + geom_line()+
+  labs(x= "Year (1990-2010)", y= "Monthly Conflict Events", title = "GED Events Tracker- Africa")
+
+africa_plot2<- africa|>
+  group_by(year)|>
+  summarise(Deaths = sum(best)) |>
+  ggplot(aes(x = year, y = Deaths)) + geom_line()+
+  labs(x= "Year (1990-2010)", y= "Yearly Conflict Fatalities", title = "GED Events Tracker- Africa")
+
+africa_plot3<- africa|>
+  group_by(month)|>
+  summarise(Deaths = sum(best)) |>
+  ggplot(aes(x = month, y = Deaths)) + geom_line()+
+  labs(x= "Year (1990-2010)", y= "Monthly Conflict Fatalities", title = "GED Events Tracker- Africa")
+
+africa_plot4<- africa|>
+  group_by(week)|>
+  summarise(Deaths = sum(best)) |>
+  ggplot(aes(x = week, y = Deaths)) + geom_line()+
+  labs(x= "Year (1990-2010)", y= "Weekly Conflict Fatalities", title = "GED Events Tracker- Africa")
+
+africa_plot
+africa_plot2
+africa_plot3
+africa_plot4
+africa_plot5
+```
+
+This is particularly interesting in the period following the collapse of the Soviet Union. While there is little consensus 
+
+For this analysis, we will exclude one sided conflict events in our data set. In the GED conflict event data set, they document instances in which one side just attacks another who is not fighting them. This obviously skews the data, and consequently makes it harder to decipher whether or not certain types of "true" conflict (where two sides are fighting eachother) result in more battle deaths. 
 
 
+conflict events not wars
 
-
-
+doesn't control for 1 typ[e of violence]
 
