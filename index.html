@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["GEDEvent.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-1-1.png","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-2-2.png","index_files/figure-html5/unnamed-chunk-2-3.png","index_files/figure-html5/unnamed-chunk-2-4.png","index_files/figure-html5/unnamed-chunk-2-5.png","index_files/figure-html5/unnamed-chunk-2-6.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-3-2.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1473,6 +1473,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="index_files/header-attrs-2.16/header-attrs.js"></script>
+  <script src="index_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1517,18 +1519,278 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="milestone-2">Milestone 2</h2>
-<p>Date source: UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) Dataset
-Research question: Does the acquisition of cheaper, short range automated artillery increase the likelihood of escalation in a regional conflict?
-Hypothesis: The acquisition of short range drones/automated artillery increases the likelihood of regional conflict escalation by creating low cost asymmetries that lower the financial and military cost of initiating conflict. For countries in longstanding regional disputes (that, for the sake of this experiment, at one point had similar post soviet armies), if a country acquires loitering munitions they are more likely to initiate conflict events in their disputed territory (this would likely occur after 2015). If niether country acquired drones, there would be no unique increase in conflict events.
-Explanatory variable: Importation and integration of loitering munitions, mostly purchased from Israel, Turkey, and Iran. GDP growth might also come into play, as part of the thesis is reliant on how countries with new cash flows can easily acquire these drones.
-Outcome variable: conflict events measured in the UCDP data set. Measures events generally, which is useful for capturing one sides general aggresiveness. Additionally, this captures military activity outside of war time, which is useful for measuring aggresiveness more generally.
-If conflict events remained stagnant after the acquisition of drones for a country, this would generally disprove my hypothesis. The are obviously external factors which affect the frequency of conflict events, which I certainly need to control for. Conversely, if there is a strong relationship between the acquisition of certain forms of smart munitions and conflict events my hypothesis would be proven (again, controlling for external factors).</p>
-<h2 id="project-thoughts">Project thoughts</h2>
-<p>Does a country having loitering munitions/short range UAVs increase the odds they escalate a regional conflict?
-I am interested in exploring data related to drone procurement and regional conflicts/territorial disputes. I would like to explore the relationship between the procurement of loitering munitions/short range drones and conflict events in disputed territories. I already have a solid set of data derived from a conflict event tracker and publicly available information about drone procurement over time for Azerbaijan that I think I could use to test this in terms of the Nagorno-Karabakh conflict. This makes me confident that I can do similar work for other long conflicts to make a more complete project. Not trying to test whether or not all out wars break out, so this would be specific to longer term “stalemate” conflicts.</p>
-<p>Also would be interested in seeing the relationship between GDP growth and/or natural resource exports and conflict events in border conflicts for countries that, after the 90s, were mostly equipped with cold war surplus munitions. My hypothesis would be that recently its become easier for gas rich countries to buy a lot of very cheap weapons that create very cost effective asymmetries between militaries.</p>
-<p>If this doesn’t work out, I think would be cool to look into how the Syrian Civil War effected Lebanese politics with available election data and data about where certain refugees went. Would also be interested in looking into how recent spikes in energy markets affected Gulf State’s economic and geopolitical activity. I feel like there’s room for a topical, data rich project.</p>
+<h2 id="final-project-conflict-deaths-and-conflict-type">Final Project: Conflict Deaths and Conflict Type</h2>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="project-introduction-research-question-data-and-general-graphs">Project: Introduction, Research Question, Data, and General Graphs</h2>
+<p>Research question: Does government involvement in African conflicts increase the amount of conflict deaths?</p>
+<p>It has been established that over time, generally, deaths during conflict have been decreasing since World War Two. That being said, conflicts in certain regions of the world have varied greatly during and after the Cold-War. In particular, Africa has experienced a litany of conflicts since the fall of the Soviet Union between both state actors (Ethiopia v. Eritrea), state actors and non state actors (Sierra Leone v. RUF) and other militia groups), and conflicts between different militia groups. While these categories can be blurred, it raises the question of whether the involvement of a government significantly increases deaths in given conflict.</p>
+<p>To answer this question, I will use the UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) to perform a cross-sectional experiment. The data set tracks and categorizes conflict events over time based on media reports (BBC monitoring, etc.). It also gives estimates for deaths in a given conflict event, accounting for civilians and providing a low and high range. It also describes the events onset and conclusion to best it can. Locations are also generally tracked, but they are rated based on precision. Also notable is the fact it tracs whether or not the conflict event occured during a longstanding conflict (like a war).</p>
+<p>The data set is and valuable due to the fact that it tracks events independent of whether or not their is an active war going on. This is valuable for my research question to the fact that the time frame after (and even before) 1990 was categorized by long conflicts, like border disputes, which have periodical periods of violence over time even if a war isn’t happening in the traditional sense.</p>
+<p>My dependent variable will be total deaths, which is categorized as “best” within the data set (summary of all types of deaths in the data set, including civilians).</p>
+<p>My main independent variable is conflict type, which we will factor categorically. The three categories are State-based conflict, non-state based conflict, and one-sided conflicts. The latter will inevitably skew the data, as massacres would logically result in disproportionate deaths and also any answer to my research questions (this data set tracks conflict events, not just wars).Time frame of event will also be factored categorically in the regression, but it is split into 4 5 year period for my 20 year period.</p>
+<p>Other independent variables will be conflict duration, active year (whether or not the conflict event occurred during a longstanding conflict or war), and civilian deaths. Civilian deaths will almost certainly skew the results, but for the question at hand will be important for answering the question.</p>
+<p>There are other variables in the data set, like specific types of deaths, low and high estimates of deaths, and others. I will not focus on these.</p>
+<p>Below is are some basic graphs demonstrating conflict events over time from 1990 to 2010 and a graphs demonstrating conflict deaths over time since 1990 to 2010. Notable in the conflict fatalities graph is how concentrated variations in death are by month and by week, especially for larger spikes.</p>
+<p>At the bottom is a scatter plot demonstrating fatalities over time but it is coded for conflict types.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-2-2.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-2-3.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-2-4.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-2-5.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-2-6.png" width="624" /></p>
+</div>
+<h2 id="analysis-regression-visualization-and-interpretation">Analysis: Regression, Visualization, and Interpretation</h2>
+<p>With the main independent variable being categorical, the graph representations of the regression have deaths be represented over time, with independent slopes for each categorical violence type. This will not be completely representative of the table results below, but should provide a good idea of the relationship of conflict types on trends in conflict deaths over time. For the final graph, graph will be limited to 100 to control for outliers that skew the graph. Notably, the Rwandan genocide.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+−1.829
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 11.812
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.877
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor(type_of_violence_real)One_Sided_Conflict
+</td>
+<td style="text-align:center;">
+−17.226
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 7.106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor(type_of_violence_real)State_Based_Conflict
+</td>
+<td style="text-align:center;">
+13.846
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 7.009
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.048
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor(time_period)06_to_10
+</td>
+<td style="text-align:center;">
+−2.975
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 7.677
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.698
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor(time_period)90_to_95
+</td>
+<td style="text-align:center;">
+9.417
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 6.836
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.168
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+factor(time_period)96_to_2000
+</td>
+<td style="text-align:center;">
+20.683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 7.353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = 0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+conflict_duration
+</td>
+<td style="text-align:center;">
+0.243
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.054
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+deaths_civilians
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 0.004
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+p = &lt;0.001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+active_year
+</td>
+<td style="text-align:center;">
+8.310
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+s.e. = 10.247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+p = 0.417
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+25376
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.675
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.675
+</td>
+</tr>
+</tbody>
+</table>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /><img src="index_files/figure-html5/unnamed-chunk-3-2.png" width="624" /></p>
+</div>
+<p>This model addresses around 68 percent of the data with an R squared of .675.</p>
+<p>The Y intercept is −1.829, which makes statistically sense because we are testing against categorical variables. For my categorical variables of interest, my dummy variables of state-based conflict and one-sided conflict are being compared against non-state conflict. Holding the other variables constant, one sided conflict has -17.226 deaths compared to non-state conflict. Conversely, state-based conflict has 13.846 more deaths. Both have p values &lt;.05 (.048 and 0.15 respectively), indicating that this relationship is statistically significant (not necessarily causal)</p>
+<p>Also notable is that compared to the time period of 2001-2005, 1990-1995 had 9.417 more deaths and 2006-2010 had 2.975 less deaths. Notably, though, neither coefficient had a p value that was too low, with each having one of .168 and .698 respectively. What was significant was the difference between 2001-2005 and 1996-2000, with 1996-2000 having 20.683 deaths comparatively. This is a large difference, and it is important being that the p value was .005. I’m not sure what explains this, but it might be that, controlling for other variables, this was a particularly violent period in Africa.</p>
+<p>The coefficient for conflict duration is .243. This indicates that conflicts that endure are more deadly, which makes sense. It also very significant, with a p value less than .001. What surprises me is the average increase in deaths in smaller than I would expect, but it could make sense given the fact that the data set tracks conflict events independent of one another and its unit is days.</p>
+<p>Understandably, for every unit increase in civilian deaths there was a unit increase in conflict deaths and it is extremely statistically significant. This isn’t very surprising.</p>
+<p>For the coefficient for active_year (which is a categorical variable for whether or not a conflict is occurring), there is a 8.310 in deaths based on whether or not there is a conflict occurring. Notably, though, the p value is very high so it isn’t statistically significant.</p>
+<p>The first graph is hard to decipher based on the very significant outliers in 1994 for one-sided conflict and the late nineties up to 2000. Generally, I think this just allows any observer to appreciate how devastating the Rwandan genocide was.</p>
+<p>The second table, which excludes important outlier, indicates that over time, non-state conflicts in general are becoming more deadly over time. This doesn’t necessarily mean that there are more non-state conflicts over time based on the slope. But conflict related deaths are increasing independent of the other variables. This is surprising, as the one-sided conflict category accounts for non-state actors killing civilians. The graph then indicates that conflicts between non state actors became deadlier between 1990 and 2010.</p>
+<p>Also notable is the decrease in deadliness in state-based conflicts over time. While this slope is less dramatic than the increase in non-state conflicts, it is noticeable. I could only ponder on what this is due to, but I would imagine it might have to do with the end of the cold war and it’s effects on state building and stability through proxy wars beforehand. That would just be conjecture though.</p>
+<p>The decrease in deadliness in one-sided conflict is less significant than that for state-based conflicts, but it is still there. It’s relative stability might have to do with the inverse slopes of the other two types of conflict, but I am not sure.</p>
+<h2 id="analysis-summary-and-limitation">Analysis: Summary and limitation</h2>
+<p>In conclusion, it appears that conflict type had a statistically significant effect on conflict deadliness in Africa between 1990 and 2000. Conflicts where one side is a government tend to be deadlier than conflicts between non-state actors when controlling for civilian deaths. It is therefore more generally deadly for a combatant in Africa to fight in a war involving a government. Specific time frame of a given conflict seems to be less important, discounting the period between 1996-2000 which significantly more deadly statistically, indicating a unique factor in that time period which drove deaths controlling for all other variables.</p>
+<p>This analysis was limited by the data and its scope. The GED data set is limited in its ability to account for all actual deaths, as it is based on media reporting. This potentially skews towards more public conflicts and might discount lower level conflicts in extremely unstable areas (that might be more likely to include non-state conflicts). Additionally, including the one-sided variable in my regression limits the scope of the regression results. Civilians die in war, and its inclusion means that the results are not fully representative of the scope of a given conflict.</p>
+<p>Given that this was region specific (in Africa), it would also be valuable to factor countries or even general regions when performing another regression. Even in making this regression regional, the diversity of the African conflict makes it very hard to infer any potential causality based on these results. Maybe combining this data set with others that include potential driving factors of conflict (over time) would provide a better picture of conflict trends during this period and allow more inference of causality.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

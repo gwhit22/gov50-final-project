@@ -6,7 +6,7 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-## Milestone 3
+## Final Project: Conflict Deaths and Conflict Type
 
 
 ```{r,echo=FALSE}
@@ -42,48 +42,30 @@ africa<-africa|>
                                    1995 < year & year <= 2000  ~ 2,
                                   2000 < year & year <= 2005  ~ 3,
                                     2005 < year & year <= 2010  ~ 4))
-
-africa
-africa2<- africa|>
-  group_by(week)|>
-  summarise(conflict_events = sum(type_of_violence)) |>
-  ggplot(aes(x = week, y= conflict_events)) + geom_line()+
-  labs(x= "Time", y= "Weekly Conflict Events", title = "GED Events Tracker- Nagorno-Karabakh")
-
-
-
-africa_regression<-
-  lm(best ~ factor(type_of_violence_real) + factor(time_period) + country_id + conflict_duration + deaths_civilians + active_year, data = africa, na.action = na.exclude)
-
-
-modelsummary::modelsummary(africa_regression,
-                           statistic = c("s.e. = {std.error}",
-                                         "p = {p.value}"),
-                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
 ```
 
+## Project: Introduction, Research Question, Data, and General Graphs
+Research question: Does government involvement in African conflicts increase the amount of conflict deaths?
 
-state actors vs non state actors 
+It has been established that over time, generally, deaths during conflict have been decreasing since World War Two. That being said, conflicts in certain regions of the world have varied greatly during and after the Cold-War. In particular, Africa has experienced a litany of conflicts since the fall of the Soviet Union between both state actors (Ethiopia v. Eritrea), state actors and non state actors (Sierra Leone v. RUF) and other militia groups), and conflicts between different militia groups. While these categories can be blurred, it raises the question of whether the involvement of a government significantly increases deaths in  given conflict.
 
-duration
-
-urban and rural
-
-outliers- rwanda 
+To answer this question, I will use the UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) to perform a cross-sectional experiment. The data set tracks and categorizes conflict events over time based on media reports (BBC monitoring, etc.). It also gives estimates for deaths in a given conflict event, accounting for civilians and providing a low and high range. It also describes the events onset and conclusion to best it can. Locations are also generally tracked, but they are rated based on precision. Also notable is the fact it tracs whether or not the conflict event occured during a longstanding conflict (like a war).
 
 
-relative to the ommitted category
+The data set is and valuable due to the fact that it tracks events independent of whether or not their is an active war going on. This is valuable for my research question to the fact that the time frame after (and even before) 1990 was categorized by long conflicts, like border disputes, which have periodical periods of violence over time even if a war isn't happening in the traditional sense.
 
-belongs to conflict
+My dependent variable will be total deaths, which is categorized as "best" within the data set (summary of all types of deaths in the data set, including civilians). 
 
-## Milestone 2
-Research question: Does government involvement in conflicts increase the amount of deaths?
+My main independent variable is conflict type, which we will factor categorically. The three categories are State-based conflict, non-state based conflict, and one-sided conflicts. The latter will inevitably skew the data, as massacres would logically result in disproportionate deaths and also any answer to my research questions (this data set tracks conflict events, not just wars).Time frame of event will also be factored categorically in the regression, but it is split into 4 5 year period for my 20 year period. 
 
-It has been established that over time, generally, deaths during conflict have been decreasing since World War Two. That being said, conflicts in certain regions of the world have varied greatly during and after the Cold-War. In particular, Africa has experienced a litany of conflicts since the fall of the Soviet Union between both state actors (Ethiopia v. Eritrea), state actors and non state actors (Sierra Leone v. RUF and other militia groups), and conflicts between different militia groups. While these categories can be blurred, it raises the question of whether the involvement of a government significantly increases deaths in  given conflict.
+Other independent variables will be conflict duration, active year (whether or not the conflict event occurred during a longstanding conflict or war), and civilian deaths. Civilian deaths will almost certainly skew the results, but for the question at hand will be important for answering the question.
 
-To answer this question, we will use the UCDP Georeferenced Event Dataset AND/OR Cities and Armed Conflict Events (CACE) to perform a cross-sectional expirment. The data set tracks and categorizes conflict events over time. Our dependent variable will be total deaths, which is categorized as "best" within the data set. Our main independent variable is conflict type, which we have to factor categorically for a couple reasons. The three categories are State-based conflict, non-state based conflict, and one-sided conflicts. The latter will inevitably skew the data, as massacres would logically result in disproportionate deaths and also directly our research questions (this data set tracks conflict events, not just wars). Other independent variables will be conflict duration, and active year (whether or not the conflict event occured during a longstanding conflict or war). Year of event and country will also be factored categorically in the regression, but for clarity on our independent variables it will be omitted from our table (year of event is split into 4 categories for our 20 year period).
 
-Below is a basic graph demonstrating conflict events over time from 1990 to 2010 and a graphs demonstrating conflict deaths over time since 1990 to 2010. Notable in the conflict fatalities graph is how concentrated variations in death are by month and by week, especially for larger spikes. 
+There are other variables in the data set, like specific types of deaths, low and high estimates of deaths, and others. I will not focus on these.  
+
+Below is are some basic graphs demonstrating conflict events over time from 1990 to 2010 and a graphs demonstrating conflict deaths over time since 1990 to 2010. Notable in the conflict fatalities graph is how concentrated variations in death are by month and by week, especially for larger spikes. 
+
+At the bottom is a scatter plot demonstrating fatalities over time but it is coded for conflict types.  
 
 ```{r, echo=FALSE}
 africa_plot<- africa|>
@@ -116,19 +98,74 @@ africa_plot4<- africa|>
   ggplot(aes(x = week, y = Deaths)) + geom_line()+
   labs(x= "Year (1990-2010)", y= "Weekly Conflict Fatalities", title = "GED Events Tracker- Africa")
 
+africa_scatter <- africa|>
+  ggplot(aes(x = year, y = best, color = type_of_violence_real)) + geom_point()+
+  labs(x = "Year", y = "Total Fatalities", Color = "Type of Violence")
+
 africa_plot
 africa_plot2
 africa_plot3
 africa_plot4
 africa_plot5
+africa_scatter
+```
+## Analysis: Regression, Visualization, and Interpretation
+
+With the main independent variable being categorical, the graph representations of the regression have deaths be represented over time, with independent slopes for each categorical violence type. This will not be completely representative of the table results below, but should provide a good idea of the relationship of conflict types on trends in conflict deaths over time. For the final graph, graph will be limited to 100 to control for outliers that skew the graph. Notably, the Rwandan genocide. 
+
+```{r, echo=FALSE}
+africa_regression<-
+  lm(best ~ factor(type_of_violence_real) + factor(time_period) + conflict_duration + deaths_civilians+ active_year, data = africa, na.action = na.exclude)
+
+
+modelsummary::modelsummary(africa_regression,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+
+africa_scatter_2<- africa|> 
+  ggplot(aes(x = year, y = best, color = type_of_violence_real)) + geom_point()+
+  labs(x = "Year", y = "Total Fatalities", Color = "Type of Violence") + geom_smooth(method= "lm", se= FALSE)
+
+africa_scatter_2
+
+africa_scatter_3<- africa|> 
+  filter(best< 100)|>
+  ggplot(aes(x = year, y = best, color = type_of_violence_real)) + geom_point() + geom_smooth(method= "lm", se= FALSE) +
+  labs(x = "Year", y = "Total Fatalities") 
+
+africa_scatter_3
 ```
 
-This is particularly interesting in the period following the collapse of the Soviet Union. While there is little consensus 
+This model addresses around 68 percent of the data with an R squared of .675.
 
-For this analysis, we will exclude one sided conflict events in our data set. In the GED conflict event data set, they document instances in which one side just attacks another who is not fighting them. This obviously skews the data, and consequently makes it harder to decipher whether or not certain types of "true" conflict (where two sides are fighting eachother) result in more battle deaths. 
+The Y intercept is −1.829, which makes statistically sense because we are testing against categorical variables. For my categorical variables of interest, my dummy variables of state-based conflict and one-sided conflict are being compared against non-state conflict. Holding the other variables constant, one sided conflict has -17.226 deaths compared to non-state conflict. Conversely, state-based conflict has 13.846 more deaths. Both have p values <.05 (.048 and 0.15 respectively), indicating that this relationship is statistically significant (not necessarily causal)
+
+Also notable is that compared to the time period of 2001-2005, 1990-1995 had 9.417 more deaths and 2006-2010 had 2.975 less deaths. Notably, though, neither coefficient had a p value that was too low, with each having one of .168 and .698 respectively. What was significant was the difference between 2001-2005 and 1996-2000, with 1996-2000 having 20.683 deaths comparatively. This is a large difference, and it is important being that the p value was .005. I'm not sure what explains this, but it might be that, controlling for other variables, this was a particularly violent period in Africa.
+
+The coefficient for conflict duration is .243. This indicates that conflicts that endure are more deadly, which makes sense. It also very significant, with a p value less than .001. What surprises me is the average increase in deaths in smaller than I would expect, but it could make sense given the fact that the data set tracks conflict events independent of one another and its unit is days. 
+
+Understandably, for every unit increase in civilian deaths there was a unit increase in conflict deaths and it is extremely statistically significant. This isn't very surprising.
+
+For the coefficient for active_year (which is a categorical variable for whether or not a conflict is occurring), there is a 8.310 in deaths based on whether or not there is a conflict occurring. Notably, though, the p value is very high so it isn't statistically significant. 
 
 
-conflict events not wars
+The first graph is hard to decipher based on the very significant outliers in 1994 for one-sided conflict and the late nineties up to 2000. Generally, I think this just allows any observer to appreciate how devastating the Rwandan genocide was. 
 
-doesn't control for 1 typ[e of violence]
+
+The second table, which excludes important outlier, indicates that over time, non-state conflicts in general are becoming more deadly over time. This doesn't necessarily mean that there are more non-state conflicts over time based on the slope. But conflict related deaths are increasing independent of the other variables. This is surprising, as the one-sided conflict category accounts for non-state actors killing civilians. The graph then indicates that conflicts between non state actors became deadlier between 1990 and 2010. 
+
+Also notable is the decrease in deadliness in state-based conflicts over time. While this slope is less dramatic than the increase in non-state conflicts, it is noticeable. I could only ponder on what this is due to, but I would imagine it might have to do with the end of the cold war and it's effects on state building and stability through proxy wars beforehand. That would just be conjecture though. 
+
+The decrease in deadliness in one-sided conflict is less significant than that for state-based conflicts, but it is still there. It's relative stability might have to do with the inverse slopes of the other two types of conflict, but I am not sure. 
+
+## Analysis: Summary and limitation
+
+In conclusion, it appears that conflict type had a statistically significant effect on conflict deadliness in Africa between 1990 and 2000. Conflicts where one side is a government tend to be deadlier than conflicts between non-state actors when controlling for civilian deaths. It is therefore more generally deadly for a combatant in Africa to fight in a war involving a government. Specific time frame of a given conflict seems to be less important, discounting the period between 1996-2000 which significantly more deadly statistically, indicating a unique factor in that time period which drove deaths controlling for all other variables. 
+
+This analysis was limited by the data and its scope. The GED data set is limited in its ability to account for all actual deaths, as it is based on media reporting. This potentially skews towards more public conflicts and might discount lower level conflicts in extremely unstable areas (that might be more likely to include non-state conflicts). Additionally, including the one-sided variable in my regression limits the scope of the regression results. Civilians die in war, and its inclusion means that the results are not fully representative of the scope of a given conflict. 
+
+Given that this was region specific (in Africa), it would also be valuable to factor countries or even general regions when performing another regression. Even in making this regression regional, the diversity of the African conflict makes it very hard to infer any potential causality based on these results. Maybe combining this data set with others that include potential driving factors of conflict (over time) would provide a better picture of conflict trends during this period and allow more inference of causality. 
+
+
 
